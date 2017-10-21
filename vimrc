@@ -18,6 +18,9 @@ colorscheme molokai
 " colorscheme oceandeep
 " colorscheme dracula
 
+" ### AIRLINE THEME
+"let g:airline_theme="deus"
+
 if has('gui_running')
   "set guioptions-=T  " no toolbar
   "colorscheme mod8
