@@ -42,6 +42,7 @@ endif
 
 " ### FONT
 if has("gui_running")
+  set transparency=2
   if has("gui_gtk2")
     "set guifont=Courier\ New\ 11
   elseif has("gui_photon")
@@ -78,7 +79,6 @@ syntax on
 "let anyfold_activate=0
 "set foldlevel=0
 "hi Folded term=underline
-set transparency=2
 set so=7
 set cmdheight=2
 set hid
