@@ -5,10 +5,13 @@ execute pathogen#infect()
 au VimEnter *  NERDTree
 
 " ### VIM-GO
-" let g:go_disable_autoinstall=0
+" vim-go requires Vim 7.4.1689 or Neovim, but you're using an older version.
+let g:go_version_warning = 0
+"let g:go_disable_autoinstall=0
+
 
 " ### COLORSCHEME
-" colorscheme monokai
+colorscheme molokai
 " colorscheme bitterjug
 " colorscheme ghostbuster
 " colorscheme lucid
@@ -19,7 +22,7 @@ if has('gui_running')
   "set guioptions-=T  " no toolbar
   "colorscheme mod8
   "let g:molokai_original = 1
-  autocmd BufNewFile,BufReadPost * colorscheme molokai
+  "autocmd BufNewFile,BufReadPost * colorscheme molokai
   set lines=112
   set columns=200
 else
@@ -29,7 +32,7 @@ else
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
   
-  colorscheme molokai
+  "colorscheme molokai
   "let g:molokai_original = 1
   set lines=50 columns=147 linespace=0
 endif
@@ -66,6 +69,13 @@ set ruler
 filetype on
 filetype plugin on
 filetype indent on
+syntax on
+
+" ### Anyfold
+"let anyfold_activate=0
+"set foldlevel=0
+"hi Folded term=underline
+set transparency=2
 set so=7
 set cmdheight=2
 set hid
