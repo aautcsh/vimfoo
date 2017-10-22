@@ -3,6 +3,7 @@ execute pathogen#infect()
 
 " ### AUTO-OPEN
 au VimEnter *  NERDTree
+let NERDTreeMapOpenInTab='\r'
 
 " ### COLORSCHEME
 colorscheme molokai
