@@ -311,6 +311,8 @@ let g:go_version_warning = 0
 
 " ### Buftabline
 "set hidden
-"nnoremap <C-.> :bnext<CR>
-"nnoremap <C-,> :bprev<CR>
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+nnoremap <C-c> :bd<CR>
+nnoremap <C-i> :tabnew<CR>
 let g:airline#extensions#tabline#enabled = 1
