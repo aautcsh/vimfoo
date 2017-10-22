@@ -6,17 +6,12 @@ au VimEnter *  NERDTree
 
 " ### COLORSCHEME
 colorscheme molokai
-" colorscheme bitterjug
-" colorscheme ghostbuster
-" colorscheme lucid
-" colorscheme oceandeep
-" colorscheme dracula
 
+" ### GENERAL DISPLAY FOO
 if has('gui_running')
   autocmd BufNewFile,BufReadPost * set transparency=2
   set transparency=2
   "set guioptions-=T  " no toolbar
-  "colorscheme mod8
   "let g:molokai_original = 1
   "autocmd BufNewFile,BufReadPost * colorscheme molokai
   set lines=112
@@ -28,8 +23,6 @@ else
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
   
-  "colorscheme molokai
-  "let g:molokai_original = 1
   set lines=50 columns=147 linespace=0
 endif
 
@@ -49,23 +42,18 @@ if has("gui_running")
   "set guifont=Courier\ New
 else
 endif
-set encoding=utf-8
 
 " ### SALESFORCE FILETYPE
 autocmd BufNewFile,BufReadPost *.cls,*.trigger set filetype=apex
 autocmd BufNewFile,BufReadPost *.page,*.cmp set filetype=visualforce
 "autocmd BufNewFile,BufReadPost * set transparency=2
 
-" ### GENERAL DISPLAYING FOO
+" Toggle no numbers -> line numbers -> relative numbers with absolute cursor line 
 nmap <C-v> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
-set relativenumber
-syntax enable
-set nocompatible
-set ruler
+
 filetype on
 filetype plugin on
 filetype indent on
-syntax on
 
 " ### Anyfold
 "let anyfold_activate=0
@@ -85,6 +73,20 @@ set magic
 set showmatch
 set mat=2
 
+" ### INDENTATION FOO
+set textwidth=120
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set ai
+"retab
+
+set relativenumber              " Sart with relative line numbers. cursor absolute ln
+set encoding=utf-8              " Set ancoding
+syntax enable                   " Syntax
+syntax on                       " Syntax
+set nocompatible                " tbd
+set ruler                       " ruler 120
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
 set ttyscroll=3                 " Speedup scrolling
@@ -96,7 +98,6 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set noerrorbells                " No beeps
-set number                      " Show line numbers
 set showcmd                     " Show me what I'm typing
 set noswapfile                  " Don't use swapfile
 set nobackup                    " Don't create annoying backup files
@@ -127,14 +128,6 @@ if has('persistent_undo')
   set undofile
   set undodir=~/.config/vim/tmp/undo//
 endif
-
-" ### INDENTATION FOO
-set textwidth=120
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set ai
-"retab
 
 " ### FILE BACKUPS
 " Enable backup files in temp folder
@@ -247,9 +240,8 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 
 " Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
-
+"nmap <C-g> :GoDeclsDir<cr>
+"imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 
 augroup go
   autocmd!
