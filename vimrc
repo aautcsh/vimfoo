@@ -236,71 +236,71 @@ let g:tagbar_type_go = {
 
 " ### VIM-GO
 " vim-go
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
+" let g:go_fmt_command = "goimports"
+" let g:go_autodetect_gopath = 1
+" let g:go_list_type = "quickfix"
 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_generate_tags = 1
 
-" Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+" " Open :GoDeclsDir with ctrl-g
+" nmap <C-g> :GoDeclsDir<cr>
+" imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 
 
-augroup go
-  autocmd!
+" augroup go
+"   autocmd!
 
-  " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+"   " Show by default 4 spaces for a tab
+"   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
 
-  " :GoBuild and :GoTestCompile
-  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+"   " :GoBuild and :GoTestCompile
+"   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
-  " :GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+"   " :GoTest
+"   autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
-  " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+"   " :GoRun
+"   autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
-  " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+"   " :GoDoc
+"   autocmd FileType go nmap <Leader>d <Plug>(go-doc)
 
-  " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+"   " :GoCoverageToggle
+"   autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
-  " :GoInfo
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+"   " :GoInfo
+"   autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
-  " :GoMetaLinter
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+"   " :GoMetaLinter
+"   autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
 
-  " :GoDef but opens in a vertical split
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
-  " :GoDef but opens in a horizontal split
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+"   " :GoDef but opens in a vertical split
+"   autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+"   " :GoDef but opens in a horizontal split
+"   autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
 
-  " :GoAlternate  commands :A, :AV, :AS and :AT
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-augroup END
+"   " :GoAlternate  commands :A, :AV, :AS and :AT
+"   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+"   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+"   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+"   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+" augroup END
 
-" build_go_files is a custom function that builds or compiles the test file.
-" It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
+" " build_go_files is a custom function that builds or compiles the test file.
+" " It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
+" function! s:build_go_files()
+"   let l:file = expand('%')
+"   if l:file =~# '^\f\+_test\.go$'
+"     call go#cmd#Test(0, 1)
+"   elseif l:file =~# '^\f\+\.go$'
+"     call go#cmd#Build(0)
+"   endif
+" endfunction
 
 " ### VIM-GO
 " vim-go requires Vim 7.4.1689 or Neovim, but you're using an older version.
@@ -334,3 +334,15 @@ let g:airline#extensions#tabline#enabled = 1
   "   \ 'link': 'some_bad_symbolic_links',
   "   \ }
 "endif
+"
+"TMUX
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+let g:tmuxline_powerline_separators = 0
+
