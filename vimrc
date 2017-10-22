@@ -4,12 +4,6 @@ execute pathogen#infect()
 " ### AUTO-OPEN
 au VimEnter *  NERDTree
 
-" ### VIM-GO
-" vim-go requires Vim 7.4.1689 or Neovim, but you're using an older version.
-let g:go_version_warning = 0
-"let g:go_disable_autoinstall=0
-
-
 " ### COLORSCHEME
 colorscheme molokai
 " colorscheme bitterjug
@@ -18,10 +12,9 @@ colorscheme molokai
 " colorscheme oceandeep
 " colorscheme dracula
 
-" ### AIRLINE THEME
-"let g:airline_theme="deus"
-
 if has('gui_running')
+  autocmd BufNewFile,BufReadPost * set transparency=2
+  set transparency=2
   "set guioptions-=T  " no toolbar
   "colorscheme mod8
   "let g:molokai_original = 1
@@ -42,7 +35,6 @@ endif
 
 " ### FONT
 if has("gui_running")
-  set transparency=2
   if has("gui_gtk2")
     "set guifont=Courier\ New\ 11
   elseif has("gui_photon")
@@ -62,11 +54,11 @@ set encoding=utf-8
 " ### SALESFORCE FILETYPE
 autocmd BufNewFile,BufReadPost *.cls,*.trigger set filetype=apex
 autocmd BufNewFile,BufReadPost *.page,*.cmp set filetype=visualforce
+"autocmd BufNewFile,BufReadPost * set transparency=2
 
 " ### GENERAL DISPLAYING FOO
-"set lines=112 
-"set columns=200
-set number
+nmap <C-v> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
+set relativenumber
 syntax enable
 set nocompatible
 set ruler
@@ -309,5 +301,10 @@ function! s:build_go_files()
   endif
 endfunction
 
+" ### VIM-GO
+" vim-go requires Vim 7.4.1689 or Neovim, but you're using an older version.
+let g:go_version_warning = 0
+
 " ### Bash
 nmap <C-^> :!bash<CR>
+
