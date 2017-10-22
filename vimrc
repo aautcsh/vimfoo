@@ -86,6 +86,7 @@ set magic
 set showmatch
 set mat=2
 
+set t_Co=256                    " force vim to use 256 colors
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
 set ttyscroll=3                 " Speedup scrolling

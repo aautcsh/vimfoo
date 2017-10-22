@@ -3,6 +3,7 @@ export PATH=$PATH:$GOPATH/bin
 
 [[ $TERM != "screen" ]] && exec tmux
 
+alias tmux="tmux -2"
 alias macvim='open -a MacVim.app'
 alias photoshop='open -a Adobe\ Photoshop\ CC\ 2014.app'
 alias illustrator='open -a Adobe\ Illustrator\ CC\ 2014.app'
