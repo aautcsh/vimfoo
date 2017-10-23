@@ -3,25 +3,19 @@ execute pathogen#infect()
 
 " ### AUTO-OPEN
 au VimEnter *  NERDTree
-let NERDTreeMapOpenInTab='\r'
+"let NERDTreeMapOpenInTab='\r'
 
 " ### COLORSCHEME
+"colorscheme mod8
 colorscheme molokai
-" colorscheme bitterjug
-" colorscheme ghostbuster
-" colorscheme lucid
-" colorscheme oceandeep
-" colorscheme dracula
+"let g:molokai_original "
 
 if has('gui_running')
+  set lines=112 columns=200
   autocmd BufNewFile,BufReadPost * set transparency=2
   set transparency=2
   "set guioptions-=T  " no toolbar
-  "colorscheme mod8
-  "let g:molokai_original = 1
   "autocmd BufNewFile,BufReadPost * colorscheme molokai
-  set lines=112
-  set columns=200
 else
   " ### BLOCK CURSOR
   let &t_ti.="\e[1 q"
@@ -29,8 +23,6 @@ else
   let &t_EI.="\e[1 q"
   let &t_te.="\e[0 q"
   
-  "colorscheme molokai
-  "let g:molokai_original = 1
   set lines=50 columns=147 linespace=0
 endif
 
@@ -50,28 +42,20 @@ if has("gui_running")
   "set guifont=Courier\ New
 else
 endif
-set encoding=utf-8
 
-" ### SALESFORCE FILETYPE
-autocmd BufNewFile,BufReadPost *.cls,*.trigger set filetype=apex
-autocmd BufNewFile,BufReadPost *.page,*.cmp set filetype=visualforce
-"autocmd BufNewFile,BufReadPost * set transparency=2
-
-" ### GENERAL DISPLAYING FOO
-nmap <C-v> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
-set relativenumber
-syntax enable
-set nocompatible
-set ruler
+" ### GENERAL PREFERENCES
 filetype on
 filetype plugin on
 filetype indent on
 syntax on
+syntax enable
 
-" ### Anyfold
-"let anyfold_activate=0
-"set foldlevel=0
-"hi Folded term=underline
+" ### GENERAL DISPLAYING FOO
+nmap <C-v> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
+set relativenumber
+set nocompatible
+set ruler
+set encoding=utf-8
 set so=7
 set cmdheight=2
 set hid
@@ -85,7 +69,6 @@ set nolazyredraw
 set magic
 set showmatch
 set mat=2
-
 set t_Co=256                    " force vim to use 256 colors
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
@@ -117,19 +100,6 @@ set nocursorcolumn              " Do not highlight column (speeds up highlightin
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
 
-" Enable to copy to clipboard for operations like yank, delete, change and put
-" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
-if has('unnamedplus')
-  set clipboard^=unnamed
-  set clipboard^=unnamedplus
-endif
-
-" This enables us to undo files even if you exit Vim.
-if has('persistent_undo')
-  set undofile
-  set undodir=~/.config/vim/tmp/undo//
-endif
-
 " ### INDENTATION FOO
 set textwidth=120
 set expandtab
@@ -149,6 +119,29 @@ set noswapfile " disable swap - all buffers will be opened in memory
 " # COOL TAB COMPLETE MENU
 set wildmenu
 set wildignore=*.o,*~
+
+" ### ANYFOLD
+"let anyfold_activate=0
+"set foldlevel=0
+"hi Folded term=underline
+
+" Enable to copy to clipboard for operations like yank, delete, change and put
+" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+if has('unnamedplus')
+  set clipboard^=unnamed
+  set clipboard^=unnamedplus
+endif
+
+" This enables us to undo files even if you exit Vim.
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/vim/tmp/undo//
+endif
+
+" ### SALESFORCE FILETYPE
+autocmd BufNewFile,BufReadPost *.cls,*.trigger set filetype=apex
+autocmd BufNewFile,BufReadPost *.page,*.cmp set filetype=visualforce
+"autocmd BufNewFile,BufReadPost * set transparency=2
 
 " ### SHORTCUTS
 au BufRead,BufNewFile * imap <C-W> :%!otool -tV %
@@ -177,10 +170,10 @@ command Preview :!preview %<CR>
 
 " ### GENERAL ABBREVIATION
 " # Can also do simple typo corrections. I NEVER get `the' correct!!!
-  ab teh the
-  ab hte the
-  ab ouput output
-  ab adn and
+  " ab teh the
+  " ab hte the
+  " ab ouput output
+  " ab adn and
 
 " ### BINARY
 " # QUICK HACK OBJDUMP
